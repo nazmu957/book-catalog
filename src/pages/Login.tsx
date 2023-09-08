@@ -26,7 +26,9 @@ export default function Login() {
             }}
           />
           <div className="relative z-20 flex items-center text-lg font-medium">
-            <img className="h-8" src={logo} alt="" />
+            <Link to="/">
+              <img className="h-8" src={logo} alt="" />
+            </Link>
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2"></blockquote>
@@ -38,9 +40,7 @@ export default function Login() {
               <h1 className="text-2xl font-semibold tracking-tight">
                 Login to your account
               </h1>
-              <p className="text-sm text-muted-foreground">
-                Enter your email 
-              </p>
+              <p className="text-sm text-muted-foreground">Enter your email</p>
             </div>
             <LoginForm />
             <p className="px-8 text-center text-sm text-muted-foreground">

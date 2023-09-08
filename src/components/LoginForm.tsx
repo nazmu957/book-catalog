@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
-// import { loginUser } from '@/redux/features/user/userSlice';
+import { loginUser } from '@/redux/features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -27,21 +27,21 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
     formState: { errors },
   } = useForm<LoginFormInputs>();
 
-  // const { user, isLoading } = useAppSelector((state) => state.user);
+  const { user, isLoading } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
   const onSubmit = (data: LoginFormInputs) => {
     console.log(data);
-    // dispatch(loginUser({ email: data.email, password: data.password }));
+    dispatch(loginUser({ email: data.email, password: data.password }));
   };
 
-  // useEffect(() => {
-  //   if (user.email && !isLoading) {
-  //     navigate('/');
-  //   }
-  // }, [user.email, isLoading]);
+  useEffect(() => {
+    if (user.email && !isLoading) {
+      navigate('/');
+    }
+  }, [user.email, isLoading]);
   return (
     <div className={cn('grid gap-6', className)} {...props}>
       <form onSubmit={handleSubmit(onSubmit)}>
