@@ -51,6 +51,26 @@ export default function Navbar() {
                   <Link to="/checkout">Checkout</Link>
                 </Button>
               </li>
+
+              {!user.email && (
+                <>
+                  {' '}
+                  <li>
+                    <Button variant="link" asChild>
+                      <Link to="/login">Login</Link>
+                    </Button>
+                  </li>
+                  
+                </>
+              )}
+              {user.email && (
+                <li>
+                  <Button onClick={handleLogout} variant="link" asChild>
+                    <Link to="/signup">Logout</Link>
+                  </Button>
+                </li>
+              )}
+
               <li>
                 <Button variant="ghost">
                   <HiOutlineSearch size="25" />
@@ -70,9 +90,7 @@ export default function Navbar() {
                   <DropdownMenuContent>
                     <DropdownMenuLabel>Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="cursor-pointer">
-                      Profile
-                    </DropdownMenuItem>
+                    
                     {!user.email && (
                       <>
                         {' '}
@@ -96,12 +114,8 @@ export default function Navbar() {
                         Logout
                       </DropdownMenuItem>
                     )}
-                    <DropdownMenuItem className="cursor-pointer">
-                      Billing
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer">
-                      Team
-                    </DropdownMenuItem>
+                    
+                    
                   </DropdownMenuContent>
                 </DropdownMenu>
               </li>
