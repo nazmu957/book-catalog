@@ -9,9 +9,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
 } from '../components/ui/dropdown-menu';
-import { HiOutlineSearch } from 'react-icons/hi';
-import Cart from '../components/Cart';
-import logo from '../assets/images/technet-logo.png';
+import logo from '../assets/images/book-logo.jpg';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
@@ -32,7 +30,7 @@ export default function Navbar() {
       <div className="h-full w-full bg-white/60">
         <div className="flex items-center justify-between w-full md:max-w-7xl h-full mx-auto ">
           <div>
-            <img className="h-8" src={logo} alt="log" />
+            <img className="h-20" src={logo} alt="log" />
           </div>
           <div>
             <ul className="flex items-center">
@@ -60,7 +58,6 @@ export default function Navbar() {
                       <Link to="/login">Login</Link>
                     </Button>
                   </li>
-                  
                 </>
               )}
               {user.email && (
@@ -71,26 +68,18 @@ export default function Navbar() {
                 </li>
               )}
 
-              <li>
-                <Button variant="ghost">
-                  <HiOutlineSearch size="25" />
-                </Button>
-              </li>
-              <li>
-                <Cart />
-              </li>
               <li className="ml-5">
                 <DropdownMenu>
                   <DropdownMenuTrigger className="outline-none">
                     <Avatar>
-                      <AvatarImage src="https://github.com/shadcn.png" />
+                      <AvatarImage src="https://i.ibb.co/h7Jk73W/user.jpg" />
                       <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuLabel>Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    
+
                     {!user.email && (
                       <>
                         {' '}
@@ -114,8 +103,6 @@ export default function Navbar() {
                         Logout
                       </DropdownMenuItem>
                     )}
-                    
-                    
                   </DropdownMenuContent>
                 </DropdownMenu>
               </li>
