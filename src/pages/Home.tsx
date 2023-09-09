@@ -9,7 +9,7 @@ import Products from './Products';
 export default function Home() {
   return (
     <>
-      <div className="flex justify-between items-center h-[calc(100vh-80px)] max-w-7xl mx-auto ">
+      <div className="flex justify-between items-center h-[calc(70vh-10px)] max-w-7xl mx-auto ">
         <div>
           <h1 className="text-5xl font-black text-primary mb-2">
           "Unlock the World of Words <br /> Your Literary Journey Begins Here!"

@@ -7,8 +7,10 @@ import Products from '@/pages/Products';
 import Checkout from '@/pages/Checkout';
 import Signup from '@/pages/Signup';
 import ProductDetails from '@/pages/ProductDetails';
-import AddBook from '@/pages/AddBook';
+import AddBook from '@/pages/AddBook'
 import PrivateRoute from './PrivateRoute';
+
+
 
 const routes = createBrowserRouter([
   {
@@ -28,16 +30,16 @@ const routes = createBrowserRouter([
         ),
       },
       {
-        path: '/addBook',
-        element: <AddBook />,
-      },
-      {
         path: '/product-details/:id',
         element: <ProductDetails />,
       },
       {
         path: '/checkout',
         element: <Checkout />,
+      },
+      {
+        path: '/addbook',
+        element: <AddBook />,
       },
     ],
   },

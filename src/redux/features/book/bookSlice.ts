@@ -14,7 +14,7 @@ const bookSlice = createSlice({
     name: 'book',
     initialState,
     reducers: {
-        bookList: (state, action: PayloadAction<IProduct>) => {
+        addNewBook: (state, action: PayloadAction<IProduct>) => {
             state.products.push(action.payload);
         },
         
@@ -22,5 +22,5 @@ const bookSlice = createSlice({
 });
 
 
-export const {bookList} = bookSlice.actions;
+export const {addNewBook} = bookSlice.actions;
 export default bookSlice.reducer;
