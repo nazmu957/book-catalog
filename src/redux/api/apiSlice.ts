@@ -13,8 +13,11 @@ export const api = createApi({
         body: data,
       }),
     }),
+    getproduct: builder.query({
+      query: (id) => `/products/${id}`,
+    }),
   }),
 });
 
 
-export const { usePostProductMutation } = api;
+export const { usePostProductMutation, useGetproductQuery } = api;

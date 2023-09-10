@@ -1,19 +1,29 @@
 import { Textarea } from '@/components/ui/textarea';
 import { usePostProductMutation } from '@/redux/api/apiSlice';
+import { useGetProductsQuery } from '@/redux/features/products/productApi';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { FiSend } from 'react-icons/fi';
+import { IProduct } from '@/types/globalTypes';
+import ProductCard from '@/components/ProductCard';
+
 
 interface IProps {
   id: string;
+  
+  
 }
 
-export default function AddBook() {
+export default function AddBook({id }: IProps) {
   const [inputValue1, setInputValue1] = useState<string>('');
   const [inputValue2, setInputValue2] = useState<string>('');
   const [inputValue3, setInputValue3] = useState<string>('');
   const [inputValue4, setInputValue4] = useState<string>('');
   const [inputValue5, setInputValue5] = useState<string>('');
 
+  const {data} = useGetProductsQuery(id);
+  
+  const books  = data?.data 
+  console.log(books);
   const [postProduct, { isLoading, isError, isSuccess }] =
     usePostProductMutation();
 
@@ -72,25 +82,25 @@ export default function AddBook() {
           className="min-h-[30px]"
           onChange={handleChange2}
           value={inputValue2}
-          placeholder='author'
+          placeholder="author"
         />
         <Textarea
           className="min-h-[30px]"
           onChange={handleChange3}
           value={inputValue3}
-          placeholder='genre'
+          placeholder="genre"
         />
         <Textarea
           className="min-h-[30px]"
           onChange={handleChange4}
           value={inputValue4}
-          placeholder='image link'
+          placeholder="image link"
         />
         <Textarea
           className="min-h-[30px]"
           onChange={handleChange5}
           value={inputValue5}
-          placeholder='publication date'
+          placeholder="publication date"
         />
         <button
           type="submit"
@@ -99,6 +109,15 @@ export default function AddBook() {
           <FiSend />
         </button>
       </form>
+
+      <div className="grid grid-cols-12 max-w-7xl mx-auto relative ">
+        <div className="col-span-12 grid grid-cols-3 gap-10 pb-20">
+          {books?.map((product: IProduct) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+        
+      </div>
     </div>
   );
 }
