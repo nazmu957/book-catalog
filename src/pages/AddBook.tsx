@@ -20,7 +20,7 @@ export default function AddBook({id }: IProps) {
   const [inputValue4, setInputValue4] = useState<string>('');
   const [inputValue5, setInputValue5] = useState<string>('');
 
-  const {data} = useGetProductsQuery(id);
+  const { data } = useGetProductsQuery(id);
   
   const books  = data?.data 
   console.log(books);

@@ -1,4 +1,5 @@
 export interface IProduct {
+  id: Key | null | undefined;
   _id: number;
   name: string;
   title: string;
