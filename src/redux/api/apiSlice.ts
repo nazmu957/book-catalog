@@ -6,6 +6,7 @@ export const api = createApi({
     // baseUrl: 'https://book-catalog-server-navy-theta.vercel.app',
      baseUrl: 'http://localhost:5000',
   }),
+  tagTypes: ['books'],
   endpoints: (builder) => ({
     postProduct: builder.mutation({
       query: ({ data }) => ({
@@ -13,9 +14,11 @@ export const api = createApi({
         method: 'POST',
         body: data,
       }),
+      invalidatesTags: ['books'],
     }),
     getproduct: builder.query({
       query: (id) => `/products/${id}`,
+      providesTags: ['books'],
     }),
   }),
 });
