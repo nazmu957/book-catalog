@@ -15,6 +15,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { setUser } from '@/redux/features/user/userSlice';
 
+
 export default function Navbar() {
   const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
@@ -45,9 +46,11 @@ export default function Navbar() {
                 </Button>
               </li>
               <li>
-                <Button variant="link" asChild>
-                  <Link to="/checkout">Checkout</Link>
-                </Button>
+                
+                  <Button variant="link" asChild>
+                    <Link to="/addbook">Add New Book</Link>
+                  </Button>
+               
               </li>
 
               {!user.email && (
