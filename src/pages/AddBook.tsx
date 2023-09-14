@@ -5,6 +5,7 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import { IProduct } from '@/types/globalTypes';
 import ProductCard from '@/components/ProductCard';
+import { toast } from '@/components/ui/use-toast';
 
 
 interface IProps {
@@ -67,6 +68,9 @@ export default function AddBook({id }: IProps) {
       },
     };
     postProduct(option);
+    toast({
+      description: 'New book Added',
+    });
   };
 
   return (
