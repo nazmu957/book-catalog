@@ -7,14 +7,12 @@ import { IProduct } from '@/types/globalTypes';
 import ProductCard from '@/components/ProductCard';
 import { toast } from '@/components/ui/use-toast';
 
-
 interface IProps {
   id: string;
-  
-  
+  status: string;
 }
 
-export default function AddBook({id }: IProps) {
+export default function AddBook({ id }: IProps) {
   const [inputValue1, setInputValue1] = useState<string>('');
   const [inputValue2, setInputValue2] = useState<string>('');
   const [inputValue3, setInputValue3] = useState<string>('');
@@ -22,8 +20,8 @@ export default function AddBook({id }: IProps) {
   const [inputValue5, setInputValue5] = useState<string>('');
 
   const { data } = useGetProductsQuery(id);
-  
-  const books  = data?.data 
+
+  const books = data?.data;
   console.log(books);
   const [postProduct, { isLoading, isError, isSuccess }] =
     usePostProductMutation();
@@ -50,14 +48,9 @@ export default function AddBook({id }: IProps) {
     setInputValue5(event.target.value);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const newProduct = {
-      inputValue1,
-      inputValue2,
-      inputValue3,
-      inputValue4,
-    };
+
     const option = {
       data: {
         title: inputValue1,
@@ -67,40 +60,52 @@ export default function AddBook({id }: IProps) {
         publicationdate: inputValue5,
       },
     };
-    postProduct(option);
-    toast({
-      description: 'New book Added',
-    });
+    try {
+      await postProduct(option);
+      toast({
+        description: 'New book Added',
+      });
+    } catch (error) {
+      toast({
+        description: 'An error occurred',
+      });
+      console.error('Error:', error);
+    }
   };
 
   return (
     <div>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
         <Textarea
+          required
           className="min-h-[30px]"
           onChange={handleChange1}
           value={inputValue1}
           placeholder="title"
         />
         <Textarea
+          required
           className="min-h-[30px]"
           onChange={handleChange2}
           value={inputValue2}
           placeholder="author"
         />
         <Textarea
+          required
           className="min-h-[30px]"
           onChange={handleChange3}
           value={inputValue3}
           placeholder="genre"
         />
         <Textarea
+          required
           className="min-h-[30px]"
           onChange={handleChange4}
           value={inputValue4}
           placeholder="image link"
         />
         <Textarea
+          required
           className="min-h-[30px]"
           onChange={handleChange5}
           value={inputValue5}
@@ -120,7 +125,6 @@ export default function AddBook({id }: IProps) {
             <ProductCard product={product} />
           ))}
         </div>
-        
       </div>
     </div>
   );

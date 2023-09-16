@@ -9,6 +9,7 @@ export default function ProductDetails() {
   const { id } = useParams();
 
   const { data: product, isLoading, error} = useSingleProductQuery(id);
+  console.log(product);
 
   return (
     <>
@@ -23,16 +24,17 @@ export default function ProductDetails() {
           <p className="text-xl">Genre: {product?.genre}</p>
           <p className="text-xl">publicationdate: {product?.publicationdate}</p>
          
-          <ul className="space-y-1 text-lg">
-            {product?.features?.map((feature : string) => (
-              <li key={feature}>{feature}</li>
+          {/* <p> Reviews:
+            {product?.comments?.map((comments: string) => (
+              <li key={comments}>{comments}</li>
             ))}
-          </ul>
-          <Button className='me-2'>Edit</Button>
+          </p> */}
+          
+          <Button className="me-2">Edit</Button>
           <Button>Delete</Button>
         </div>
       </div>
-      
+      <ProductReview id={id!} />
     </>
   );
 }

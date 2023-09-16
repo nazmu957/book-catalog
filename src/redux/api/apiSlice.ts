@@ -4,7 +4,7 @@ export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     // baseUrl: 'https://book-catalog-server-navy-theta.vercel.app',
-     baseUrl: 'http://localhost:5000',
+    baseUrl: 'http://localhost:5000',
   }),
   tagTypes: ['books'],
   endpoints: (builder) => ({
@@ -20,8 +20,21 @@ export const api = createApi({
       query: (id) => `/products/${id}`,
       providesTags: ['books'],
     }),
+    postComment: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/comment/${id}`,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['books'],
+    }),
+    getComment: builder.query({
+    query: (id) => `/comment/${id}`, 
+    providesTags: ['books'],     
+    }),
+
   }),
 });
 
 
-export const { usePostProductMutation, useGetproductQuery } = api;
+export const { usePostProductMutation, useGetproductQuery, usePostCommentMutation,useGetCommentQuery } = api;
