@@ -22,11 +22,7 @@ export default function ProductDetails() {
           <p className="text-xl">Genre: {product?.genre}</p>
           <p className="text-xl">publicationdate: {product?.publicationdate}</p>
          
-          {/* <p> Reviews:
-            {product?.comments?.map((comments: string) => (
-              <li key={comments}>{comments}</li>
-            ))}
-          </p> */}
+          
           
           <Button className="me-2">Edit</Button>
           <Button>Delete</Button>
