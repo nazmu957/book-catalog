@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Footer from '@/layouts/Footer';
 import Products from './Products';
-
+import logo from '../assets/images/Bookshop.gif'
 
 export default function Home() {
   return (
@@ -18,9 +18,11 @@ export default function Home() {
           <Button className="mt-5">Learn more</Button>
         </div>
         <div className="relative -right-14">
-          <img className='w-[50rem]' src='https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=1380&t=st=1689684111~exp=1689684711~hmac=597e6025b535088f05877bcb9d25a13d7c255f5ae4c715f02ace6ef7696549f3' alt="" />
+          <img className='w-[50rem]' src={logo} alt="" />
         </div>
       </div>
+
+      
      
     <Products />
       <Footer />
