@@ -1,7 +1,7 @@
 import ProductReview from '@/components/ProductReview';
 import { Button } from '@/components/ui/button';
 import { useSingleProductQuery } from '@/redux/features/products/productApi';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -21,10 +21,10 @@ export default function ProductDetails() {
           <p className="text-xl">Author: {product?.author}</p>
           <p className="text-xl">Genre: {product?.genre}</p>
           <p className="text-xl">publicationdate: {product?.publicationdate}</p>
-         
-          
-          
-          <Button className="me-2">Edit</Button>
+
+          <Link to={`/editproduct/${product?._id}`}>
+            <Button className="me-2">Edit</Button>
+          </Link>
           <Button>Delete</Button>
         </div>
       </div>

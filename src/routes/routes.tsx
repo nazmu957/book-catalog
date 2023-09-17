@@ -9,6 +9,7 @@ import Signup from '@/pages/Signup';
 import ProductDetails from '@/pages/ProductDetails';
 import AddBook from '@/pages/AddBook';
 import PrivateRoute from './PrivateRoute';
+import EditProduct from '@/pages/EditProduct';
 
 
 const routes = createBrowserRouter([
@@ -33,10 +34,14 @@ const routes = createBrowserRouter([
         element: <Checkout />,
       },
       {
+        path: '/editproduct/:id',
+        element: <EditProduct />,
+      },
+      {
         path: '/addbook',
         element: (
           <PrivateRoute>
-            <AddBook id={''} />
+            <AddBook id={''} status={''} />
           </PrivateRoute>
         ),
       },

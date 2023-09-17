@@ -20,6 +20,16 @@ export const api = createApi({
       query: (id) => `/products/${id}`,
       providesTags: ['books'],
     }),
+
+    updateProduct: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/product/${id}`, // Assuming you need to provide an ID to update a specific product
+        method: 'PUT', // You can use 'PUT' or 'PATCH' depending on your API's requirements
+        body: data,
+      }),
+      invalidatesTags: ['books'], // You can adjust the invalidation tags as needed
+    }),
+
     postComment: builder.mutation({
       query: ({ id, data }) => ({
         url: `/comment/${id}`,
@@ -29,12 +39,11 @@ export const api = createApi({
       invalidatesTags: ['books'],
     }),
     getComment: builder.query({
-    query: (id) => `/comment/${id}`, 
-    providesTags: ['books'],     
+      query: (id) => `/comment/${id}`,
+      providesTags: ['books'],
     }),
-
   }),
 });
 
 
-export const { usePostProductMutation, useGetproductQuery, usePostCommentMutation,useGetCommentQuery } = api;
+export const { usePostProductMutation, useGetproductQuery, usePostCommentMutation,useGetCommentQuery,useUpdateProductMutation } = api;
