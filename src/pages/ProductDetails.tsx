@@ -9,6 +9,10 @@ export default function ProductDetails() {
   const { data: product, isLoading, error} = useSingleProductQuery(id);
   console.log(product);
 
+  const handleDelete = async () => {
+      alert('Are you sure?')
+  }
+
   return (
     <>
       <div className="flex max-w-7xl mx-auto items-center border-b border-gray-300">
@@ -25,7 +29,7 @@ export default function ProductDetails() {
           <Link to={`/editproduct/${product?._id}`}>
             <Button className="me-2">Edit</Button>
           </Link>
-          <Button>Delete</Button>
+          <Button onClick={handleDelete}>Delete</Button>
         </div>
       </div>
       <ProductReview id={id!} />
