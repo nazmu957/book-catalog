@@ -3,6 +3,7 @@ import { toast } from './ui/use-toast';
 import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '@/redux/hook';
+import { addToWishList } from '@/redux/features/wishList/wishSlice';
 
 
 interface IProps {
@@ -11,6 +12,14 @@ interface IProps {
 
 export default function ProductCard({ product }: IProps) {
     const dispatch = useAppDispatch();
+    
+    const handleAddWishList = (product: IProduct) => {
+      dispatch(addToWishList(product));
+      console.log(product)
+      toast({
+        description: 'Added On WishList',
+      });
+    };
 
   return (
     <div>
@@ -23,7 +32,7 @@ export default function ProductCard({ product }: IProps) {
         <p>Author {product?.author}</p>
         <p>Genre: {product?.genre}</p>
         <p>Publication Date: {product?.publicationdate}</p>
-        <Button variant="default">
+        <Button variant="default" onClick={() => handleAddWishList(product)}>
           Read Now
         </Button>
       </div>

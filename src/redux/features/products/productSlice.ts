@@ -1,16 +1,17 @@
-import { reducer } from './../../../components/ui/use-toast';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface IProduct {
     status: boolean;
     priceRange: number;
+    title: string;
 }
 
 const initialState: IProduct = {
-    status: false,
-    priceRange: 150,
-}
+  status: false,
+  priceRange: 150,
+  title: 'HardCover',
+};
 
 const productSlice =  createSlice({
     name: 'product',
@@ -21,10 +22,13 @@ const productSlice =  createSlice({
         },
         setPriceRange: (state, action: PayloadAction<number>) =>{
             state.priceRange = action.payload;
-        }
+        },
+        searchProduct: (state, action: PayloadAction<string>) => {
+            state.title = action.payload;
+        },
     },
 });
 
-export const { toggleState, setPriceRange } = productSlice.actions;
+export const { toggleState, setPriceRange, searchProduct } = productSlice.actions;
 
 export default productSlice.reducer;
