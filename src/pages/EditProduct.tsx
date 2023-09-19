@@ -1,9 +1,7 @@
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/ui/use-toast";
 import { useUpdateProductMutation } from "@/redux/api/apiSlice";
 import {  useSingleProductQuery } from "@/redux/features/products/productApi";
-import { useAppDispatch } from "@/redux/hook";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { FiSend } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 
@@ -16,13 +14,11 @@ export default function EditProduct() {
   const [inputValue4, setInputValue4] = useState<string>('');
   const [inputValue5, setInputValue5] = useState<string>('');
 
-     const dispatch = useAppDispatch();
+     
      const { id } = useParams();
 
   const {
     data: product,
-    isLoading: boolean,
-    error,
   } = useSingleProductQuery(id);
   console.log(product);
 
@@ -31,6 +27,7 @@ export default function EditProduct() {
   console.log(isLoading);
   console.log(isError);
   console.log(isSuccess);
+  console.log(updateProduct)
 
   const handleChange1 = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue1(event.target.value);
@@ -50,30 +47,30 @@ export default function EditProduct() {
     setInputValue5(event.target.value);
   };
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  // const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
 
-    const option = {
-      data: {
-        title: inputValue1,
-        author: inputValue2,
-        genre: inputValue3,
-        image: inputValue4,
-        publicationdate: inputValue5,
-      },
-    };
-    try {
-      await updateProduct(option);
-      toast({
-        description: 'New book Added',
-      });
-    } catch (error) {
-      toast({
-        description: 'An error occurred',
-      });
-      console.error('Error:', error);
-    }
-  };
+  //   const option = {
+  //     data: {
+  //       title: inputValue1,
+  //       author: inputValue2,
+  //       genre: inputValue3,
+  //       image: inputValue4,
+  //       publicationdate: inputValue5,
+  //     },
+  //   };
+  //   try {
+  //     await updateProduct(option);
+  //     toast({
+  //       description: 'New book Added',
+  //     });
+  //   } catch (error) {
+  //     toast({
+  //       description: 'An error occurred',
+  //     });
+  //     console.error('Error:', error);
+  //   }
+  // };
 
   return (
     <div>

@@ -6,7 +6,8 @@ import { Link, useParams } from 'react-router-dom';
 export default function ProductDetails() {
   const { id } = useParams();
 
-  const { data: product, isLoading, error} = useSingleProductQuery(id);
+  const { data: product, isLoading} = useSingleProductQuery(id);
+  console.log(isLoading);
   console.log(product);
 
   const handleDelete = async () => {

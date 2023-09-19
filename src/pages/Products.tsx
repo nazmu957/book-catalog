@@ -1,16 +1,15 @@
 import ProductCard from '@/components/ProductCard';
-import { useToast } from '@/components/ui/use-toast';
 import { useGetProductsQuery } from '@/redux/features/products/productApi';
 import { searchProduct } from '@/redux/features/products/productSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { IProduct } from '@/types/globalTypes';
 import { SetStateAction, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 export default function Products() {
   const [inputValue, setInputValue] = useState('');
-  const { data, isLoading, error } = useGetProductsQuery(undefined);
-  const { toast } = useToast();
+  const { data, isLoading} = useGetProductsQuery(undefined);
+  console.log(isLoading)
+  
 
   const { title } = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
@@ -19,8 +18,8 @@ export default function Products() {
     target: { value: SetStateAction<string> };
   }) => {
     setInputValue(e.target.value);
-    const search = e.target.value;
-    // console.log(search);
+    
+    
   };
 
   
@@ -46,23 +45,23 @@ export default function Products() {
   return (
     <>
       <div className="grid grid-cols-12 max-w-7xl mx-auto relative ">
-        <div>
+        <div className="flex
+        ">
           <input
             type="text"
-            placeholder="Enter a value"
+            placeholder="Search Book "
             value={inputValue}
             onChange={handleInputChange}
+            className="mb-4 p-3 bg-red-100"
           />
-          <button onClick={handleSubmit}>Submit</button>
+          <button className='bg-red-300 p-3 mb-4' onClick={handleSubmit}>Search</button>
         </div>
         <div className="col-span-12 grid grid-cols-3 gap-10 pb-20">
           {productsData?.map((product: IProduct) => (
-            <ProductCard  product={product} />
+            <ProductCard product={product} />
           ))}
         </div>
-        <Link to="/addbook">
-          <button className="btn bg-red-400 rounded">Add New Product</button>
-        </Link>
+        
       </div>
     </>
   );
