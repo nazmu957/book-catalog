@@ -52,6 +52,13 @@ export default function Navbar() {
                   </Button>
                
               </li>
+              <li>
+                
+                  <Button variant="link" asChild>
+                    <Link to="/wish-list">Wish List</Link>
+                  </Button>
+               
+              </li>
 
               {!user.email && (
                 <>

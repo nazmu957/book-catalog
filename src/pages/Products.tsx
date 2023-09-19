@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 export default function Products() {
   const [inputValue, setInputValue] = useState('');
   const { data, isLoading, error } = useGetProductsQuery(undefined);
-  // console.log(data);
   const { toast } = useToast();
 
   const { title } = useAppSelector((state) => state.product);
@@ -23,9 +22,9 @@ export default function Products() {
     const search = e.target.value;
     // console.log(search);
   };
-  const handleSubmit = () => {
-    // Pass the inputValue to another function or perform any desired action here
 
+  
+  const handleSubmit = () => {
     alert(`You submitted: ${inputValue}`);
     const man = `${inputValue}`
     console.log(man)

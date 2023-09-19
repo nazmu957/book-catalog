@@ -10,6 +10,7 @@ import ProductDetails from '@/pages/ProductDetails';
 import AddBook from '@/pages/AddBook';
 import PrivateRoute from './PrivateRoute';
 import EditProduct from '@/pages/EditProduct';
+import WishList from '@/pages/WishList'
 
 
 const routes = createBrowserRouter([
@@ -32,6 +33,10 @@ const routes = createBrowserRouter([
       {
         path: '/checkout',
         element: <Checkout />,
+      },
+      {
+        path: '/wish-list',
+        element: <WishList />,
       },
       {
         path: '/editproduct/:id',
