@@ -55,16 +55,16 @@ export default function ProductReview({ id }: IProps) {
             />
             <Button
               type="submit"
-              className="rounded-full h-10 w-10 p-2 text-[25px]"
+              className=" "
             >
-              <FiSend />
+             Submit
             </Button>
           </form>
           <div className="mt-10">
             {data?.comments?.map((comment: string, index: number) => (
               <div key={index} className="flex gap-3 items-center mb-5">
                 <Avatar>
-                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarImage src="https://i.ibb.co/h7Jk73W/user.jpg" />
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
                 <p>{comment}</p>
@@ -73,9 +73,7 @@ export default function ProductReview({ id }: IProps) {
           </div>
         </div>
       )}
-      {!user.email && (
-          <p>want to comment? Please login first</p>
-      )}
+      {!user.email && <p>want to comment? Please login first</p>}
     </>
   );
 }

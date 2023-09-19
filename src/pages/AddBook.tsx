@@ -74,7 +74,7 @@ export default function AddBook({ id }: IProps) {
   };
 
   return (
-    <div>
+    <div className='mx-5'>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
         <Textarea
           required
@@ -113,9 +113,9 @@ export default function AddBook({ id }: IProps) {
         />
         <button
           type="submit"
-          className="rounded-full h-10 w-10 p-2 text-[25px]"
+          className=" bg-[#7e22ce] h-10 w-20 p-2  text-white rounded"
         >
-          <FiSend />
+          Submit
         </button>
       </form>
 
