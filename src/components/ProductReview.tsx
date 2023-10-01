@@ -2,7 +2,6 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
-import { FiSend } from 'react-icons/fi';
 import { useGetCommentQuery, usePostCommentMutation } from '@/redux/api/apiSlice';
 import { useAppSelector } from '@/redux/hook';
 

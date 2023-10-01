@@ -2,7 +2,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { usePostProductMutation } from '@/redux/api/apiSlice';
 import { useGetProductsQuery } from '@/redux/features/products/productApi';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { FiSend } from 'react-icons/fi';
 import { IProduct } from '@/types/globalTypes';
 import ProductCard from '@/components/ProductCard';
 import { toast } from '@/components/ui/use-toast';

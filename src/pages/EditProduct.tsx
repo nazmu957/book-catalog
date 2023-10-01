@@ -112,9 +112,9 @@ export default function EditProduct() {
         />
         <button
           type="submit"
-          className="rounded-full h-10 w-10 p-2 text-[25px]"
+         className="btn bg-primary py-4 text-white font-bold"
         >
-          <FiSend />
+          Submit
         </button>
       </form>
     </div>
