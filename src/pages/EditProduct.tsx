@@ -2,7 +2,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { useUpdateProductMutation } from "@/redux/api/apiSlice";
 import {  useSingleProductQuery } from "@/redux/features/products/productApi";
 import { ChangeEvent, useState } from "react";
-import { FiSend } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 
 
