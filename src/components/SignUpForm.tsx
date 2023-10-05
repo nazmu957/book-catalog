@@ -29,6 +29,7 @@ export function SignupForm({ className, ...props }: UserAuthFormProps) {
   const onSubmit = (data: SignupFormInputs) => {
     console.log(data);
     dispatch(createUser({ email: data.email, password: data.password }));
+    alert('SignUp Complete Click the Login Button ')
   };
 
   return (
