@@ -49,12 +49,12 @@ export default function Products() {
         ">
           <input
             type="text"
-            placeholder="Search Book "
+            placeholder="Search Your Book "
             value={inputValue}
             onChange={handleInputChange}
             className="mb-4 p-3 bg-red-100"
           />
-          <button className='bg-red-300 p-3 mb-4' onClick={handleSubmit}>Search</button>
+          <button className='bg-red-200 p-3 mb-4 ' onClick={handleSubmit}>Search</button>
         </div>
         <div className="col-span-12 grid grid-cols-3 gap-10 pb-20">
           {productsData?.map((product: IProduct) => (
