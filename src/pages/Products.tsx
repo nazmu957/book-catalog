@@ -45,8 +45,10 @@ export default function Products() {
   return (
     <>
       <div className="grid grid-cols-12 max-w-7xl mx-auto relative ">
-        <div className="flex
-        ">
+        <div
+          className="flex
+        "
+        >
           <input
             type="text"
             placeholder="Search Your Book "
@@ -54,14 +56,16 @@ export default function Products() {
             onChange={handleInputChange}
             className="mb-4 p-3 bg-red-100"
           />
-          <button className='bg-red-200 p-3 mb-4 ' onClick={handleSubmit}>Search</button>
+          {/* Searching input field */}
+          <button className="bg-red-200 p-3 mb-4 " onClick={handleSubmit}>
+            Search
+          </button>
         </div>
         <div className="col-span-12 grid grid-cols-3 gap-10 pb-20">
           {productsData?.map((product: IProduct) => (
             <ProductCard product={product} />
           ))}
         </div>
-        
       </div>
     </>
   );
